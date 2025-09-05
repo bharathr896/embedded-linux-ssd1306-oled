@@ -1,0 +1,33 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target = <&spidev0>;
+        __overlay__ {
+            status = "disabled";
+        };
+    };
+
+    fragment@1 {
+        target = <&spi0>;  // Target the SPI0 controller
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+            status = "okay";
+
+            oled: oled@0 {
+                compatible = "bharath,ssd1306-spi";  // Custom compatible string
+                reg = <0>;                            // CS0
+                spi-max-frequency = <8000000>;
+                spi-mode = <0>; 
+                dc-gpios = <&gpio 25 0>;              // Replace with actual BCM pin for DC
+                reset-gpios = <&gpio 24 1>;           // Replace with actual BCM pin for RESET (active low)
+                
+            };
+        };
+    };
+    
+};
