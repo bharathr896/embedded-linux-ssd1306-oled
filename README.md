@@ -122,4 +122,5 @@ After the system reboots with the overlay active, you can load your driver and b
 ## Testing 
 
 ![alt text](images/commands.png)
-![alt text](images/ssd1306-output.jpg)
+
+<img src="images/ssd1306-output.jpg" alt="Architecture" width="50%">
